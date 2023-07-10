@@ -25,5 +25,5 @@ int main()
         b = c;
         c = aux;
     }
-  cout << a << " "<<  b << " " << c << endl;
+  cout << a << " " <<  b << " " << c << endl;
 }
