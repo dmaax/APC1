@@ -1,5 +1,3 @@
-// Tentar depois
-
 #include <iostream>
 #include <cmath>
 
@@ -7,30 +5,50 @@ using namespace std;
 
 int main()
 {
-    int startH, endH, startM, endM;
+    int startH, startM, endH, endM, horas, minutos;
 
     cin >> startH >> startM >> endH >> endM;
 
-    if (startH == endH && startM == endM)
+    // Calculo horas
+    if (startH == endH)
     {
-        cout << "O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)" << endl;
-    }
-    else
-    {
-        if (endH < startH && endM < startM)
+        if (endM > startM)
         {
-            cout << "O JOGO DUROU " << 24 - startH + endH << " HORA(S) E " << 60 - startM + endM << " MINUTO(S)" << endl;
+            horas = 0;
         }
         else
         {
-           if (endM - startM < 0 && endH - startH == 1)
-           {
-                cout << "O JOGO DUROU " << endH - startH - 1 << " HORA(S) E " << endM - startM + 60 << " MINUTO(S)" << endl;
-           }
-           else
-           {
-                cout << "O JOGO DUROU " << endH - startH << " HORA(S) E " << endM - startM + 60 << " MINUTO(S)" << endl;
-           }
+            horas = 24;
         }
     }
+    else
+    {
+        if (endH < startH)
+        {
+            horas = 24 - startH + endH;
+        }
+        else
+        {
+            horas = endH - startH;
+        }
+    }
+
+    // Calculo minutos
+    if (startM == endM)
+    {
+        minutos = 0;
+    }
+    else
+    {
+        if (endM < startM)
+        {
+            minutos = 60 - startM + endM;
+            horas--;
+        }
+        else
+        {
+            minutos = endM - startM;
+        }
+    }
+    cout << "O JOGO DUROU " << horas << " HORA(S) E " << minutos << " MINUTO(S)" << endl;
 }
