@@ -1,5 +1,3 @@
-// Tentar depois
-
 #include <iostream>
 #include <iomanip>
 
@@ -7,33 +5,31 @@ using namespace std;
 
 int main()
 {
-    float salario, imposto, salarioTaxado;
+    float salary, taxes = 0;
+    cin >> salary;
 
-    cin >> salario;
+    if (salary > 4500.00)
+    {
+        taxes += (salary - 4500.00) * 0.28;
+        salary -= 4500.00;
+    }
 
-    if (salario <= 2000.00)
+    if (salary > 3000.00)
+    {
+        taxes += (salary - 3000.00) * 0.18;
+        salary -= 3000.00;
+    }
+
+    if (salary > 2000.00)
+    {
+        taxes += (salary - 2000.00) * 0.08;
+        salary -= 2000.00;
+    }
+
+    if (taxes <= 0)
     {
         cout << "Isento" << endl;
         return 0;
     }
-    else
-    {
-        if (salario >= 2000.01 && salario <= 3000.00)
-        {
-            imposto = 0;
-        }
-        else
-        {
-            if (salario >= 3000.01 && salario <= 4500.00)
-            {
-                salarioTaxado = salario - 2000;
-                
-            }
-            else
-            {
-                imposto = salario * 0.28;
-            }
-        }
-    }
-    cout << "R$ " << fixed << setprecision(2) << imposto << endl;
-}
+    cout << "R$ " << taxes << endl; 
+} 

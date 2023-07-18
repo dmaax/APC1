@@ -5,63 +5,36 @@ using namespace std;
 int main()
 {
     int DDD;
+    string estado = "";
     cin >> DDD;
 
-    if (DDD == 61)
+    switch (DDD)
     {
-        cout << "Brasilia" << endl;
+        case 61:
+            estado = "Brasilia";
+            break;
+        case 71:
+            estado = "Salvador";
+            break;
+        case 11:
+            estado = "Sao Paulo";
+            break;
+        case 21:
+            estado = "Rio de Janeiro";
+            break;
+        case 32:
+            estado = "Juiz de Fora";
+            break;
+        case 19:
+            estado = "Campinas";
+            break;
+        case 27:
+            estado = "Vitoria";
+            break;
+        case 31:
+            estado = "Belo Horizonte";
+        default:
+            estado = "DDD nao cadastrado";
     }
-    else
-    {
-        if (DDD == 71)
-        {
-            cout << "Salvador" << endl;
-        }
-        else
-        {
-            if (DDD == 11)
-            {
-                cout << "Sao Paulo" << endl;
-            }
-            else
-            {
-                if (DDD == 21)
-                {
-                    cout << "Rio de Janeiro" << endl;
-                }
-                else
-                {
-                    if (DDD == 32)
-                    {
-                        cout << "Juiz de Fora" << endl;
-                    }
-                    else
-                    {
-                        if (DDD == 19)
-                        {
-                            cout << "Campinas" << endl;
-                        }
-                        else
-                        {
-                            if (DDD == 27)
-                            {
-                                cout << "Vitoria" << endl;
-                            }
-                            else
-                            {
-                                if (DDD == 31)
-                                {
-                                    cout << "Belo Horizonte" << endl;
-                                }
-                                else
-                                {
-                                    cout << "DDD nao cadastrado" << endl;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    cout << estado << endl;
 }
