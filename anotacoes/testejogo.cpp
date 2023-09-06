@@ -2,12 +2,13 @@
 #include <conio.h>
 #include <cstdlib>
 #include <ctime>
+#include <stdlib.h>
 
 // Prototipos de função
 void criar_grid(int l, int c);
 
 #define linhas 28
-#define colunas 15
+#define colunas 16
 
 using namespace std;
 
@@ -22,6 +23,7 @@ int main()
     int n = 50;
     while (n--)
     {
+        system("clear||cls");
         criar_grid(linhas, colunas);
 
         // Posição do coletor
@@ -33,10 +35,11 @@ int main()
 
         char tecla = getch();
 
-        // TODO Implementar em switc
+        // TODO Implementar em switch
         if (tecla == 'A' || tecla == 'a')
         {
             pos--;
+
 
             // Não sair da grid pela esquerda
             if (pos < 0)
