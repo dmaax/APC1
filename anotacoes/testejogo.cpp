@@ -39,8 +39,7 @@ int main()
         if (tecla == 'A' || tecla == 'a')
         {
             pos--;
-
-
+            
             // Não sair da grid pela esquerda
             if (pos < 0)
             {
