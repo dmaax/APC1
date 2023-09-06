@@ -33,11 +33,11 @@ int main()
 
         char tecla = getch();
 
-        // TODO Implementar em switch
+        // TODO Implementar em switc
         if (tecla == 'A' || tecla == 'a')
         {
             pos--;
-            
+
             // Não sair da grid pela esquerda
             if (pos < 0)
             {
