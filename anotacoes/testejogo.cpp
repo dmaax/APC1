@@ -7,7 +7,7 @@
 void criar_grid(int l, int c);
 
 #define linhas 28
-#define colunas 14
+#define colunas 15
 
 using namespace std;
 
