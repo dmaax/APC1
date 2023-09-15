@@ -1,15 +1,14 @@
 #include <iostream>
-#include <conio.h>
 #include <cstdlib>
 #include <ctime>
-#include <stdlib.h>
+#include <conio.h>
 #include <windows.h>
 
-// Prototipos de função
-void criar_grid(int l, int c);
-void atualizar_grid(int l, int c, int pos_estrela);
+// Prototypes
+void criar_grid(int l, int c, int pos_estrela);
+void atualizar_grid(int l, int c, int pos_estrela, int pos_jogador);
 
-// Tamanho da grid
+// Grid size
 #define linhas 28
 #define colunas 16
 
@@ -19,48 +18,41 @@ int main()
 {
     // Inicializar posição do coletor no centro da grid
     int pos_jogador = colunas / 2;
-    
+
     // Objeto coletor
     char jogador = 'u';
 
     // Gerar posição aleatória para a estrela
     int pos_estrela = rand() % colunas;
 
-    //int n = 50;
     while (true)
     {
-        system("clear||cls");
+        system("cls");
 
-        atualizar_grid(linhas, colunas, pos_estrela);
+        atualizar_grid(linhas, colunas, pos_estrela, pos_jogador);
 
-        // Colocar jogador na grid
-        for (int i = 0; i < pos_jogador; i++)
-        {
-            cout << " ";
-        }
-        cout << jogador << endl;
+        // Cair a estrela
+        pos_estrela = (pos_estrela + 1) % linhas;
 
-        // Movimentação do jogador
-        char tecla = getch();
+        if (kbhit()) {
+            char tecla = getch();
 
-        // TODO Implementar em switch
-        if (tecla == 'A' || tecla == 'a')
-        {
-            pos_jogador--;
-
-            // Não sair da grid pela esquerda
-            if (pos_jogador < 0)
+            // Movimentação
+            if (tecla == 'A' || tecla == 'a')
             {
-                pos_jogador = 0;
+                pos_jogador--;
+
+                // Não sair pela esquerda
+                if (pos_jogador < 0)
+                {
+                    pos_jogador = 0;
+                }
             }
-        }
-        else
-        {
-            if (tecla == 'D' || tecla == 'd')
+            else if (tecla == 'D' || tecla == 'd')
             {
                 pos_jogador++;
 
-                // Não sair da grid pela direita
+                // Não sair pela direita
                 if (pos_jogador >= colunas)
                 {
                     pos_jogador = colunas - 1;
@@ -68,9 +60,6 @@ int main()
             }
         }
 
-        // Fazer estrela cair
-        pos_estrela = (pos_estrela + 1) % linhas;
-        
         Sleep(100);
     }
 }
@@ -78,7 +67,7 @@ int main()
 void criar_grid(int l, int c, int pos)
 {
     int i, j;
-    
+
     for (i = 0; i < l; i++)
     {
         for (j = 0; j < c; j++)
@@ -96,9 +85,12 @@ void criar_grid(int l, int c, int pos)
     }
 }
 
-
-void atualizar_grid(int l, int c, int pos_estrela)
+void atualizar_grid(int l, int c, int pos_estrela, int pos_jogador)
 {
-    pos_estrela = (pos_estrela + 1) % l;
     criar_grid(l, c, pos_estrela);
+    for (int i = 0; i < pos_jogador; i++)
+    {
+        cout << " ";
+    }
+    cout << 'u' << endl;
 }
