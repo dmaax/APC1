@@ -22,6 +22,7 @@ int main()
     {
         system("clear||cls");
 
+        // Gerar posição aleatória para a estrela
         int pos_estrela =  rand() % colunas;
 
         imprimirMatriz(matriz, pos_estrela);
@@ -67,7 +68,7 @@ void imprimirMatriz(char M[linhas][colunas], int pos)
         {
             if (i == 0 && j == pos)
             {
-                cout << '&';
+                cout << M[i][j] << '&';
             }
             else
             {
