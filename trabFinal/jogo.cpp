@@ -3,7 +3,6 @@
 #include <conio.h>
 #include <cstdlib>
 #include <ctime>
-#include <unistd.h>
 
 // Tamanho da grid
 #define linhas 20
@@ -12,11 +11,13 @@
 // Protótipos das funções
 void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, int alturaE);
 bool bateuBarreira(int altB, int posB, int posJ);
+bool pegouEstrela(int altE, int posE, int posJ);
 
 // Variáveis globais
 char matriz[linhas][colunas];
 char jogador = '^';
 char barreira = '#';
+char coletavel = '*';
 
 using namespace std;
 
@@ -26,11 +27,12 @@ int main()
     int altura_barreira = 0;
     int altura_estrela = 0;
     float distancia = 0;
+    int totalEstrelas = 0;
     bool perdeu = false;
 
     srand(time(NULL));
     
-    // Posição incial da primeira estrela
+    // Gerar posição aleatória para a barreira e estrela
     int pos_barreira = rand() % colunas;
     int pos_estrela = rand() % colunas;
 
@@ -39,7 +41,7 @@ int main()
         
         system("clear||cls");
 
-        cout << "Estrelas: " << endl;
+        cout << "Estrelas: " << totalEstrelas << endl;
         cout << "Distancia: " << distancia << "km" << endl;
 
         imprimirMatriz(matriz, pos_barreira, altura_barreira, pos_estrela, altura_estrela);
@@ -51,7 +53,7 @@ int main()
         }
         cout << jogador << endl;
 
-        // Atualizar a altura da estrela para que caia
+        // Atualizar a altura para que caia
         altura_barreira++;
         altura_estrela++;
 
@@ -95,6 +97,10 @@ int main()
         }
         distancia += 1;
 
+        if (pegouEstrela(altura_estrela, pos_estrela, pos_jogador))
+        {
+            totalEstrelas++;
+        }
         if (bateuBarreira(altura_barreira, pos_barreira, pos_jogador))
         {
             perdeu = true;
@@ -116,16 +122,16 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
         for (int j = 0; j < colunas; j++)
         {
             // Gerar barreira
-            if ((i == alturaB && j == posB) && (posB > 2 || posB < colunas - 3)||
-                (i == alturaB && j == posB + 1) && (posB > 2 || posB < colunas - 3) || 
-                ((i == alturaB && j == posB + 2) && (posB > 2 || posB < colunas - 3)))
+            if ((i == alturaB + 1 && j == posB) && (posB > 2 || posB < colunas - 3)||
+                (i == alturaB  + 1 && j == posB + 1) && (posB > 2 || posB < colunas - 3) || 
+                ((i == alturaB + 1 && j == posB + 2) && (posB > 2 || posB < colunas - 3)))
             { 
                 cout << barreira;
                 ocupadoJ = j;
             }  
-            else if(i == alturaE - 3 && j == posE && posE != ocupadoJ)
+            else if (i == alturaE + 3 && j == posE && posE != ocupadoJ)
             {
-                cout << '*';
+                cout << coletavel;
             }
             else
             {
@@ -139,6 +145,18 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
 bool bateuBarreira(int altB, int posB, int posJ)
 {
     if ((altB == linhas - 1) && (posB == posJ || posB + 1 == posJ || posB - 1 == posJ))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool pegouEstrela(int altE, int posE, int posJ)
+{
+    if (altE == linhas - 3 && posE == posJ)
     {
         return true;
     }
