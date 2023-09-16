@@ -104,7 +104,8 @@ int main()
         usleep(100);
     }
     cout << endl;
-    cout << "Bateu em um asteroide. Voce morreu.";
+    cout << "Voce bateu em um asteroide :( " << endl;
+    cout << "GAME OVER " << endl;
     sleep(10000);
     return 0;
 }
