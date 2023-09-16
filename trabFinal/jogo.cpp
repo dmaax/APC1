@@ -122,9 +122,9 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
         for (int j = 0; j < colunas; j++)
         {
             // Gerar barreira
-            if ((i == alturaB + 1 && j == posB) && (posB > 2 || posB < colunas - 3)||
-                (i == alturaB  + 1 && j == posB + 1) && (posB > 2 || posB < colunas - 3) || 
-                ((i == alturaB + 1 && j == posB + 2) && (posB > 2 || posB < colunas - 3)))
+            if (((i == alturaB + 1 && j == posB) && (posB > 2 || posB < colunas - 3))||
+                ((i == alturaB  + 1 && j == posB + 1) && (posB > 2 || posB < colunas - 3)) || 
+                (((i == alturaB + 1 && j == posB + 2) && (posB > 2 || posB < colunas - 3))))
             { 
                 cout << barreira;
                 ocupadoJ = j;
