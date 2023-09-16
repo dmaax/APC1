@@ -106,7 +106,6 @@ int main()
         {
             perdeu = true;
         }
-        usleep(1000);
     }
 
     cout << endl;
@@ -126,7 +125,7 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
         {
             // Gerar barreira
             if (((i == alturaB + 1 && j == posB) && (posB > 2 || posB < colunas - 3))||
-                ((i == alturaB  + 1 && j == posB + 1) && (posB > 2 || posB < colunas - 3)) || 
+                ((i == alturaB + 1 && j == posB + 1) && (posB > 2 || posB < colunas - 3)) || 
                 (((i == alturaB + 1 && j == posB + 2) && (posB > 2 || posB < colunas - 3))))
             { 
                 cout << barreira;
