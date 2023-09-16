@@ -26,8 +26,10 @@ int main()
     int pos_jogador = colunas / 2;
     int altura_barreira = 0;
     int altura_estrela = 0;
+    
     float distancia = 0;
     int totalEstrelas = 0;
+    int vidas = 3;
     bool perdeu = false;
 
     srand(time(NULL));
@@ -104,12 +106,18 @@ int main()
         }
         if (bateuBarreira(altura_barreira, pos_barreira, pos_jogador))
         {
+            vidas--;
+            cout << "Sua nave foi danificada! " << "Vidas: " << vidas << endl;
+            sleep(2);
+        }
+        if (vidas == 0)
+        {
             perdeu = true;
         }
     }
 
     cout << endl;
-    cout << "Voce bateu em um asteroide :( " << endl;
+    cout << "Sua nave explodiu..." << endl;
     cout << "GAME OVER " << endl;
     sleep(10000);
     return 0;
