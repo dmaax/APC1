@@ -25,9 +25,7 @@ int main()
     int pos_jogador = colunas / 2;
     int altura_barreira = 0;
     int altura_estrela = 0;
-    
     float distancia = 0;
-
     bool perdeu = false;
 
     srand(time(NULL));
@@ -101,7 +99,6 @@ int main()
         {
             perdeu = true;
         }
-        usleep(100);
     }
     cout << endl;
     cout << "Voce bateu em um asteroide :( " << endl;
