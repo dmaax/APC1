@@ -75,26 +75,27 @@ int main()
         if (kbhit())
         {
             tecla = getch();
-        }
 
-        if (tecla == 'A' || tecla == 'a')
-        {
-            pos_jogador--;
-
-            if (pos_jogador < 0)
+            if (tecla == 'A' || tecla == 'a')
             {
-                pos_jogador = 0;
+                pos_jogador--;
+
+                if (pos_jogador < 0)
+                {
+                    pos_jogador = 0;
+                }
+            }
+            else if (tecla == 'D' || tecla == 'd')
+            {
+                pos_jogador++;
+
+                if (pos_jogador >= colunas)
+                {
+                    pos_jogador = colunas - 1;
+                }
             }
         }
-        else if (tecla == 'D' || tecla == 'd')
-        {
-            pos_jogador++;
-
-            if (pos_jogador >= colunas)
-            {
-                pos_jogador = colunas - 1;
-            }
-        }
+        
         distancia += 1;
 
         if (pegouEstrela(altura_estrela, pos_estrela, pos_jogador))
@@ -105,7 +106,9 @@ int main()
         {
             perdeu = true;
         }
+        usleep(1000);
     }
+
     cout << endl;
     cout << "Voce bateu em um asteroide :( " << endl;
     cout << "GAME OVER " << endl;
@@ -144,7 +147,7 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
 
 bool bateuBarreira(int altB, int posB, int posJ)
 {
-    if ((altB == linhas - 1) && (posB == posJ || posB + 1 == posJ || posB - 1 == posJ))
+    if ((altB == linhas - 1) && (posB == posJ || posB + 1 == posJ || posB + 2 == posJ))
     {
         return true;
     }
