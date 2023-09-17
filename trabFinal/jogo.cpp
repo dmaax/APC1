@@ -187,7 +187,7 @@ void menu(void)
 {
     int escolha;
     cout << R"(
-    "O universo eh um lugar bem grande. Se eh so nos, parece um terrivel desperdicio de espaco."
+    "Diante do infinito, somos apenas um pálido ponto azul."
     - Carl Sagan     .              .                  .           .
           0     .
                  .          .                 ,                ,    ,
