@@ -187,7 +187,7 @@ void menu(void)
 {
     int escolha;
     cout << R"(
-    "Diante do infinito, somos apenas um pálido ponto azul."
+    "Diante do infinito, somos apenas um palido ponto azul."
     - Carl Sagan     .              .                  .           .
           0     .
                  .          .                 ,                ,    ,
