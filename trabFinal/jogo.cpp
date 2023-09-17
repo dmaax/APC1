@@ -122,7 +122,7 @@ int main()
     cout << endl;
     cout << "Sua nave explodiu... " << "GAME OVER" << endl;
     cout << "Pontuacao: " << totalEstrelas * distancia << endl;
-    sleep(10);
+    sleep(5);
     return 0;
 
 }
