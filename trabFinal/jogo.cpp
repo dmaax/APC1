@@ -26,15 +26,14 @@ int main()
     int pos_jogador = colunas / 2;
     int altura_barreira = 0;
     int altura_estrela = 0;
-    
     float distancia = 0;
     int totalEstrelas = 0;
     int vidas = 3;
     bool perdeu = false;
 
-    srand(time(NULL));
-    
     // Gerar posição aleatória para a barreira e estrela
+    srand(time(NULL));
+
     int pos_barreira = rand() % colunas;
     int pos_estrela = rand() % colunas;
 
@@ -139,13 +138,16 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
                 cout << barreira;
                 ocupadoJ = j;
             }  
-            else if (i == alturaE + 3 && j == posE && posE != ocupadoJ)
-            {
-                cout << coletavel;
-            }
             else
             {
-                cout << ".";
+                if (i == alturaE + 3 && j == posE && posE != ocupadoJ)
+                {
+                    cout << coletavel;
+                }
+                else
+                {
+                    cout << '.';
+                }
             }
         }
         cout << endl;
