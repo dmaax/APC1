@@ -18,7 +18,7 @@ void menu(void);
 // Variáveis globais
 char matriz[linhas][colunas];
 char jogador = '^';
-char barreira = '#';
+char barreira = 'X';
 char coletavel = '*';
 
 using namespace std;
@@ -258,7 +258,7 @@ ____^/\___^--____/\____O______________/\/\---/\___________---______________
         cout << endl;
         cout << " * Utilize A e D para movimentar a sua nave." << endl;
         cout << " * Seu objetivo eh coletar o maior numero de estrelas (*) que conseguir." << endl;
-        cout << " * Cuidado com os asteroides (#)!" << endl;
+        cout << " * Cuidado com os asteroides (X)!" << endl;
         cout << " * Voce possui 3 vidas." << endl;
 
 
