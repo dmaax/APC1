@@ -25,11 +25,8 @@ using namespace std;
 
 int main()
 {
-    int escolha;
-
     menu();
-    
-    // -------------------------- Tudo apartir daqui é o jogo ----------------------------  
+
     int pos_jogador = colunas / 2;
     int altura_barreira = 0;
     int altura_estrela = 0;
