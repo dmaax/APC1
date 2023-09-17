@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <cstdlib>
 #include <ctime>
+#include <cctype>
 
 // Tamanho da grid
 #define linhas 20
@@ -12,6 +13,7 @@
 void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, int alturaE);
 bool bateuBarreira(int altB, int posB, int posJ);
 bool pegouEstrela(int altE, int posE, int posJ);
+void menu(void);
 
 // Variáveis globais
 char matriz[linhas][colunas];
@@ -23,6 +25,11 @@ using namespace std;
 
 int main()
 {
+    int escolha;
+
+    menu();
+    
+    // -------------------------- Tudo apartir daqui é o jogo ----------------------------  
     int pos_jogador = colunas / 2;
     int altura_barreira = 0;
     int altura_estrela = 0;
@@ -116,10 +123,11 @@ int main()
     }
 
     cout << endl;
-    cout << "Sua nave explodiu..." << "GAME OVER" <<endl;
+    cout << "Sua nave explodiu... " << "GAME OVER" << endl;
     cout << "Pontuacao: " << totalEstrelas * distancia << endl;
-    sleep(10000);
+    sleep(10);
     return 0;
+
 }
 
 void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, int alturaE)
@@ -146,7 +154,7 @@ void imprimirMatriz(char M[linhas][colunas], int posB, int alturaB, int posE, in
                 }
                 else
                 {
-                    cout << '.';
+                    cout << ' ';
                 }
             }
         }
@@ -175,5 +183,139 @@ bool pegouEstrela(int altE, int posE, int posJ)
     else
     {
         return false;
+    }
+}
+
+void menu(void)
+{
+    int escolha;
+    cout << R"(
+    "O universo eh um lugar bem grande. Se eh so nos, parece um terrivel desperdicio de espaco."
+    - Carl Sagan     .              .                  .           .
+          0     .
+                 .          .                 ,                ,    ,
+ .          \          .                         .
+      .      \   ,
+   .          o     .                 .                   .            .
+     .         \                 ,             .                .
+               #\##\#      .                              .        .
+             #  #O##\###                .                        .
+   .        #*#  #\##\###                       .                     ,
+        .   ##*#  #\##\##               .                     .
+      .      ##*#  #o##\#         .                             ,       .
+          .     *#  #\#     .                    .             .          ,
+                      \          .                         .
+____^/\___^--____/\____O______________/\/\---/\___________---______________
+   /\^   ^  ^    ^                  ^^ ^  '\ ^          ^       ---
+         --           -            --  -      -         ---  __       ^
+   --  __                      ___--  ^  ^                         --  __)" << endl;
+    cout << endl;
+    cout << "Bem-vindo (a)! Digite: " << endl;
+    cout << endl;
+    cout << "(1) Jogar" << endl;
+    cout << "(2) Regras" << endl;
+    cout << "(3) Sobre" << endl;
+
+    cin >> escolha;
+    
+    if (escolha == 1)
+    {
+        cout << endl;
+        cout << "3... ";
+        sleep(1);
+        cout << "2... ";
+        sleep(1);
+        cout << "1... ";
+        sleep(1);
+        cout << "0... ";
+        sleep(1);
+        cout << "Vai!!!!";
+        sleep(1);
+
+        return;
+    }
+
+    if(escolha == 2)
+    {
+        system("clear||cls");
+        cout << R"( .              +   .                .   . .     .  .
+                   .                    .       .     *
+  .       *                        . . . .  .   .  + .
+            "Voce esta aqui!"            .   .  +  . . .
+.                 |             .  .   .    .    . .
+                  |           .     .     . +.    +  .
+                 \|/            .       .   . .
+        . .       V          .    * . . .  .  +   .
+           +      .           .   .      +
+                            .       . +  .+. .
+  .                      .     . + .  . .     .      .
+           .      .    .     . .   . . .        ! /
+      *             .    . .  +    .  .       - O -
+          .     .    .  +   . .  *  .       . / |
+               . + .  .  .  .. +  .
+.      .  .  .  *   .  *  . +..  .            *
+ .      .   . .   .   .   . .  +   .    .            +)" << endl;
+
+    
+
+        cout << endl;
+        cout << " * Utilize A e D para movimentar a sua nave." << endl;
+        cout << " * Seu objetivo eh coletar o maior numero de estrelas (*) que conseguir." << endl;
+        cout << " * Cuidado com os asteroides (#)!" << endl;
+        cout << " * Voce possui 3 vidas." << endl;
+
+
+
+        cout << endl << "Para voltar ao menu inicial, digite 0" << endl;
+        
+        do
+        {
+            cin >> escolha;
+        } while (escolha != 0);
+
+        if (escolha == 0)
+        {
+            system("clear||cls");
+            menu();
+        }
+    
+    }
+    if (escolha == 3)
+    {
+        system("clear||cls");
+        cout << R"(                                       _..-,--.._
+                                 ,`. ,',','      `.
+                                 `. `,/`/          \
+                                   :'.`:            :
+        ____ _          _ __       | |`|            |
+      _(    `.)        ( (  )`.    : `-'            ;     _
+     ( (    ) ))      ( (    ))    ,\_            _/.  (`','
+    ( (   )  _)        `-(__.'    '.  ```------'''  .`
+     '.__)--'       .-..           |``-...____...-''|
+                   (_)_))          |                |
+              ,'`.        ___...---|                |--..._
+  ,'`. ,'`. ,'   _`.---'''         |                | "
+-'..._`.   `.   /`-._  "      "    |    _           |
+       ```-..`./:::::)             `-...||______...-'    "
+              /:::_.'     "        "                "
+           _.:.'''   "                       "          )" << endl;
+
+
+           cout << endl;
+           cout << "Trabalho final da disciplina de APC1 - Unicentro" << endl;
+           cout << "Lucas Cogrossi, 2023" << endl;
+           cout << endl << "Para voltar ao menu inicial, digite 0" << endl;
+
+            do
+            {
+                cin >> escolha;
+            } while (escolha != 0);
+
+            if (escolha == 0)
+            {
+                system("clear||cls");
+                menu();
+            }
+
     }
 }
